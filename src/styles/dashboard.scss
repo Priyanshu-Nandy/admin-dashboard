@@ -14,7 +14,7 @@
            opacity: 0.7; 
         }
     }
-    .widgetcontainer{
+    .widget-container{
         @include flex(row,space-between,stretch,2rem);
         padding: 2rem 2rem 2rem 0;
         .widget{
@@ -24,7 +24,7 @@
             padding: 2rem;
             border-radius: 10px;
             @include flex(row,space-between,stretch,0);
-    .widgetInfo{
+    .widget-info{
         >p{
             opacity: 0.7;
             font-size: 0.8rem;
@@ -36,14 +36,14 @@
             @include flex(row,unset,center,0.2rem);
         }
     }
-    .widgetCircle{
+    .widget-circle{
         position: relative;
         @include square(5rem);
         border-radius: 50%;
         flex: none;
         display: grid;
         place-items: center;
-        background-color: aquamarine;
+        
         &::before{
             content: "";
             position: absolute;
@@ -55,6 +55,66 @@
             position: relative;
         }
     }
+        }
+    }
+    .graph-container{
+        @include flex(row,unset,unset,2rem);
+        padding: 0 2rem 2rem 0;
+        >div{
+            background-color: white;
+            border-radius: 10px;
+        }
+        .revenue-chart{
+            width: 100%;
+            padding: 1rem 3rem;
+            >h2{
+                @include heading;
+                margin: 1rem 0 2rem 0.25rem;
+                text-align: center;
+            }
+        }
+        .dashboard-categories{
+            width: 100%;
+            max-width: 16rem;
+            @include flex(column,center,unset,0);
+            padding-bottom: 2rem;
+            >h2{
+                @include heading;
+                margin: 1.5rem 0 2rem 0;
+                text-align: center;
+                
+            }
+            >div{
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding-left: 0.5rem;
+            }
+            .category-item{
+                width: 100%;
+                @include flex(row,space-between);
+                padding: 1rem;
+                >h5{
+                    letter-spacing: 1px;
+                    font-weight: 350;
+                   
+                }
+                >div{
+                    margin-left: auto;
+                    width: 6rem;
+                    background-color: rgb(217,217,217);
+                    border-radius: 20px;
+                    height: 0.5rem;
+                    flex: none;
+                    >div{
+                        height: 100%;
+                        border-radius: 20px;
+                    }
+                }
+                >span{
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                }
+            }
         }
     }
 }

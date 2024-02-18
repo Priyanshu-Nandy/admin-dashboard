@@ -2,10 +2,10 @@ import { BsSearch } from "react-icons/bs"
 import AdminSidebar from "../components/AdminSidebar"
 import { FaRegBell } from "react-icons/fa"
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi"
-
+import data from "../assets/data.json"
 const Dashboard = () => {
   return (
-    <div className="adminContainer">
+    <div className="admin-container">
       <AdminSidebar/>
       <main className="dashboard">
         <div className="bar">
@@ -15,7 +15,7 @@ const Dashboard = () => {
           />
           <FaRegBell/>
         </div>
-        <section className="widgetcontainer">
+        <section className="widget-container">
         <WidgetItem 
         percent={-20} 
         amount={true} 
@@ -39,6 +39,26 @@ const Dashboard = () => {
         heading="Products" 
         color="purple"/>
         </section>
+        <section className="graph-container">
+          <div className="revenue-chart">
+            <h2>Revenue & Transactions</h2>
+            {/* Graph here */}
+          </div>
+          <div className="dashboard-categories">
+            <h2>Inventories</h2>
+            <div>
+              {
+                data.categories.map((i)=>(
+                  <CategoryItem 
+                  key={i.heading}
+                  color={`hsl(${i.value},${i.value*4}%,50%)`} 
+                  value={i.value} 
+                  heading={i.heading}/>
+                ))
+              }
+            </div>
+          </div>
+        </section>
       </main>
       </div>
   )
@@ -58,7 +78,7 @@ const WidgetItem=({
   amount=false
 }:WidgetItemProps)=>(
   <article className="widget">
-    <div className="widgetInfo">
+    <div className="widget-info">
       <p>{heading}</p>
       <h4>{amount?`$${value}`:value}</h4>
      {
@@ -70,7 +90,7 @@ const WidgetItem=({
      } 
     </div>
     {/* conic-gradient is used to make a part of the circle */}
-     <div className="widgetCircle" 
+     <div className="widget-circle" 
      style={{
      background: `conic-gradient(
       ${color} ${Math.abs(percent)/100*360}deg,
@@ -84,5 +104,22 @@ const WidgetItem=({
      </div>
   </article>
 )
-
+interface CategoryItemProps{
+  color:string;
+  value:number;
+  heading:string;
+}
+const CategoryItem=({color,value,heading}:CategoryItemProps)=>(
+  <div className="category-item">
+    <h5>{heading}</h5>
+    <div>
+      <div style={{
+        backgroundColor:color,
+        width:`${value}%`
+      }}>
+      </div>
+    </div>
+    <span>{value}%</span>
+  </div>
+)
 export default Dashboard
