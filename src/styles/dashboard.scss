@@ -21,7 +21,7 @@
             min-width:16rem;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.132);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             @include flex(row,space-between,stretch,0);
     .widget-info{
@@ -69,7 +69,7 @@
             padding: 1rem 3rem;
             >h2{
                 @include heading;
-                margin: 1rem 0 2rem 0.25rem;
+                margin: 1rem 0 1rem 0.25rem;
                 text-align: center;
             }
         }
